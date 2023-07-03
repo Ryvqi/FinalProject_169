@@ -14,7 +14,7 @@ public:
     virtual void input() {}
     virtual float Luas() { return 0; }
     virtual float Keliling() { return 0; }
-    virtual void cekUkuran() {}
+    virtual void cekUkuran() { return; }
 
     void setX(int a) {
         this->x = a;
@@ -37,7 +37,7 @@ class Lingkaran : public bidangDatar {
 public:
     void input() {
         int r;
-        cout << "Masukkan jari-jari lingkaran: ";
+        cout << "Masukkan jejari lingkaran: ";
         cin >> r;
         setX(r);
     }
