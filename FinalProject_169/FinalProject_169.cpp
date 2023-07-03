@@ -3,7 +3,7 @@ using namespace std;
 
 class bidangDatar {
 private:
-    int x, y;
+    int x, y; //variabel untuk menyimpan input dari lingkaran maupun bujursangkar
 
 public:
     bidangDatar() {
@@ -11,24 +11,24 @@ public:
         y = 0;
     }
 
-    virtual void input() {}
-    virtual float Luas() { return 0; }
-    virtual float Keliling() { return 0; }
-    virtual void cekUkuran() { return; }
+    virtual void input() {} //fungsi yang menerima input dan mengirim input melalui fungsi setX untuk disimpan di x
+    virtual float Luas() { return 0; } //fungsi untuk menghitung luas
+    virtual float Keliling() { return 0; } //fungsi untuk menghitung keliling
+    virtual void cekUkuran() { return; } 
 
-    void setX(int a) {
+    void setX(int a) { //fungsi untuk memberi/mengirim nilai pada x
         this->x = a;
     }
 
-    int getX() {
+    int getX() { //fungsi untuk membaca/mengambil nilai dalam x
         return x;
     }
 
-    void setY(int b) {
+    void setY(int b) { //fungsi untuk memberi/mengirim nilai pada y
         this->y = b;
     }
 
-    int getY() {
+    int getY() { //fungsi untuk membaca/mengambil nilai dalam y
         return y;
     }
 };
