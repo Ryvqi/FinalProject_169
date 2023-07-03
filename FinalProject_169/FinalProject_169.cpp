@@ -1,20 +1,98 @@
-// FinalProject_169.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+using namespace std;
+class bidangDatar {
+private:
+	int x, y;
+public:
+	bidangDatar() {
+		x = 0;
+		y = 0;
+	}
+	virtual void input() {}
+	virtual float Luas(int a) { return 0; }
+	virtual float Keliling(int a) { return 0; }
+	virtual void cekUkuran() {}
+	void setX(int a) {
+		this->x = a;
+	}
+	int getX() {
+		return x;
+	}
+	void setY(int b) {
+		this->y = b;
+	}
+	int getY() {
+		return y;
+	}
+};class Lingkaran :public bidangDatar {public:
+	void input() {
+		int r;
+		cout << "Masukkan jari-jari lingkaran: ";
+		cin >> r;
+		setX(r);
+	}
 
-int main()
-{
-    std::cout << "Hello World!\n";
+	float Luas() {
+		return 3.14 * getX() * getX();
+	}
+
+	float Keliling() {
+		return 2 * 3.14 * getX();
+	}	void cekUkuran() {		if (Keliling() + Luas() > 40) {			cout << "Ukuran Lingkaran adalah besar" << endl;		}		else if (Keliling() + Luas() > 20) {			cout << "Ukuran Lingkaran adalah sedang" << endl;		}		else if (Keliling() + Luas() > 10) {			cout << "Ukuran Lingkaran adalah kecil" << endl;		}	}};class Persegipanjang :public bidangDatar {public:	void input() {
+		int p, l;
+		cout << "Masukkan panjang persegi panjang: ";
+		cin >> p;
+		setX(p);
+		cout << "Masukkan lebar persegi panjang: ";
+		cin >> l;
+		setY(l);
+	}
+
+	float Luas() {
+		return getX() * getY();
+	}
+
+	float Keliling() {
+		return 2 * (getX() + getY());
+	}	void cekUkuran() {		if (Keliling() + Luas() > 40) {			cout << "Ukuran Persegi Panjang adalah besar" << endl;		}		else if (Keliling() + Luas() > 20) {			cout << "Ukuran Persegi Panjang adalah sedang" << endl;		}		else if (Keliling() + Luas() > 10) {			cout << "Ukuran Persegi Panjang adalah kecil" << endl;		}	}};int main() {
+	char ch;
+
+	do {
+		bidangDatar* bd;
+		Lingkaran lingkaran;
+		Persegipanjang persegiPanjang;
+
+		int bentuk;
+		cout << "Pilih bentuk bidang datar:" << endl;
+		cout << "1. Lingkaran" << endl;
+		cout << "2. Persegi Panjang" << endl;
+		cout << "Pilihan: ";
+		cin >> bentuk;
+
+		switch (bentuk) {
+		case 1:
+			bd = &lingkaran;
+			cout << "Lingkaran dibuat" << endl;
+			bd->input();
+			cout << "Luas Lingkaran = " << bd->Luas() << endl;
+			cout << "Keliling Lingkaran = " << bd->Keliling() << endl;
+			bd->cekUkuran();
+			break;
+		case 2:
+			bd = &persegiPanjang;
+			cout << "Persegi Panjang dibuat" << endl;
+			bd->input();
+			cout << "Luas Persegi Panjang = " << bd->Luas() << endl;
+			cout << "Keliling Persegi Panjang = " << bd->Keliling() << endl;
+			bd->cekUkuran();
+			break;
+		default:
+			cout << "Pilihan tidak valid!" << endl;
+		}
+
+		cout << "Apakah anda ingin mengulang program? (Y/N): ";
+		cin >> ch;
+	} while (ch == 'Y' || ch == 'y');
+
+	return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
